@@ -1,29 +1,39 @@
 .App {
+  min-height: 100vh;
+  color: white;
+  background-color: #282c34;
+  padding: 20px;
+  font-family: sans-serif;
   text-align: center;
 }
+input:invalid { border-color: red; }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.Logstyle {
+  padding: 20px;
+  margin: 20px;
+  border: 2px solid;
+  border-radius: 15px;
+  border-color: forestgreen;
+  height: 50%;
+  width: 50%;
+  display:inline-block;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.logTitle{
+  font-family: serif;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+#forgotPassword{
+  font-family: serif;
+  float: right;
 }
 
+label{
+  float: left;
+}
+.mb-3{
+  font-family: serif;
+}
 .App-link {
   color: #61dafb;
 }
@@ -35,4 +45,169 @@
   to {
     transform: rotate(360deg);
   }
+}
+
+.myApp{
+  min-height: 100vh;
+  padding: 20px;
+  font-family: sans-serif;
+  text-align: center;
+}
+
+
+.search-container button {
+  float: right;
+  background: #ddd;
+  font-size: 17px;
+  border: none;
+  cursor: pointer;
+}
+.hearderlogout{
+  float: right;
+}
+
+.heardersearch{
+  font-family: sans-serif;
+}
+.row-padding {
+  margin-top: 25px;
+  margin-bottom: 25px;
+}
+
+.hearderAddTraningsplan{
+  float:right;
+}
+
+.logo{
+  color:orange;
+  float: left;
+  font-style: italic;
+}
+
+c
+.containerImageAccount img{
+  height: 50px;
+  width: 50px;
+}
+/*AddTrainingsCss------------------------------------------------------------------*/
+
+.addTraininingsplan{
+/*  width: 60%;*/
+  padding: 20px;
+  margin: 20px;
+  border: 2px solid;
+  border-radius: 15px;
+  border-color: darkgreen;
+  height: 50%;
+  text-align: center;
+  margin: auto;
+  width: 60%;
+  flex-flow: row wrap;
+}
+
+@media (max-width: 750px) {
+  .addTraininingsplan {
+    grid-template-columns: 225px auto;
+    grid-template-rows: auto auto auto;
+  }
+}
+.createTraining{
+  font-family: serif;
+}
+
+.stylingDasboarddaten{
+  font-family: serif;
+  text-align: center
+}
+.stylingDasboarddaten p h6{
+  font-family: "Arial Black";
+}
+
+.panels > div {
+  border: 2px solid;
+  border-radius: 15px;
+  border-color: darkgreen;
+  height: 20%;
+  text-align:justify;
+  margin: auto;
+  width: 20%;
+  float: left;
+  background-color: forestgreen;
+  position: relative;
+  display: flex;
+  flex-direction: column-reverse;
+  padding: 20px;
+  margin: 10px;
+  flex-flow: row wrap;
+}
+
+@media (max-width: 750px) {
+  .panels {
+    grid-template-columns: 225px auto;
+    grid-template-rows: auto auto auto;
+  }
+}
+
+textarea{
+  height: 200px;
+  width: 200px;
+}
+
+.stylingDasboardList{
+  width: 200px;
+  height: 150px;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  text-align: center
+}
+.navbar{
+  position: sticky;
+  top: 0;
+}
+
+/*Players.css-----------------------------------------------------------------------------------------------*/
+.Allplayers{
+  position: relative;
+  padding: 10px;
+  margin: 5px;
+  display: flex;
+  flex-flow: row wrap;
+}
+
+/*playerprofilsytling------------------------------------------------------------------------------------------*/
+.playerprofilsytling{
+  padding: 90px;
+  margin: 100px;
+  flex-flow: row wrap;
+}
+
+.ononastyling{
+  width: 400px;
+  height: 400px;
+}
+
+.profisstatistikstyling{
+  float: right;
+}
+.profisstatistikstyling-left{
+  float: left;
+}
+table, th, td {
+  border: 2px solid black;
+  border-collapse: collapse;
+  background-color:black;
+  color: white;
+  font-family: Serif;
+}
+
+/*userprofilstyling--------------------------------------------------------------------------------------------*/
+
+.userprofilstyling{
+  width: 100px;
+  height: 80px;
+  margin: 1%;
+  padding: 1%;
+  text-align: center;
+  border-color: forestgreen;
+  flex-flow: row wrap;
 }
