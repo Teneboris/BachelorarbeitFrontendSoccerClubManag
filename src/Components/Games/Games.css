@@ -1,0 +1,49 @@
+.panelsgames{
+    margin: -19% 0;
+    display: flex;
+    flex-wrap: wrap;
+    padding: 15%;
+}
+
+@media (max-width: 750px) {
+    .panelsgames{
+        margin: -25% 0;
+        display: flex;
+        flex-wrap: wrap;
+        padding: 15%;
+    }
+}
+
+.panelsgames > div {
+    border: 2px solid;
+    border-radius: 15px;
+    border-color: darkgreen;
+    text-align:justify;
+    float: left;
+    background-color: azure;
+    position: relative;
+    display: flex;
+    padding: 0;
+    margin: 3rem 2rem 0rem 2rem;
+    flex-flow: row wrap;
+}
+
+.panelsgames>div:hover {
+    -webkit-box-shadow: 8px 9px 12px 6px rgba(0,0,0,0.78);
+    box-shadow: 8px 9px 12px 6px rgba(0,0,0,0.78);
+}
+
+.game-content {
+    height: 100%;
+}
+
+.gamesstyling {
+    padding-top: 6%;
+    margin: 0%;
+}
+
+.dialogDesign{
+    width: 700%;
+    height: 100%;
+    background-color:red
+}

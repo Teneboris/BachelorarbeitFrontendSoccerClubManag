@@ -1,6 +1,8 @@
 import React, {useState} from 'react';
 import Hearder from "../Hearder/Hearder";
 import './PostGames.css'
+import HearderResponsive from "../Hearder/HearderResponsive";
+import Navbar from "../Hearder/Navbar";
 
 function PostGames(props) {
 
@@ -20,9 +22,10 @@ function PostGames(props) {
         <div>
             <div>
 
-                <div>
-                    <Hearder/>
+                <div className = "navbar">
+                    <Navbar/>
                 </div>
+                <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&libraries=places"></script>
                 <br/>
                 <br/>
                 <div className='PostGamesStyling'>

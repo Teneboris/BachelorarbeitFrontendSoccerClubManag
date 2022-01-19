@@ -1,0 +1,217 @@
+
+@media  all and (min-width: 1024px) and (max-width: 1280px) and (max-device-width: 480px){
+    .messagestyle{
+        border: 2px solid;
+        border-color: darkgreen;
+        border-radius: 20px;
+        padding: 2%;
+        margin: 2%;
+        position: static;
+    }
+}
+
+
+.veticalline{
+    border-left: 2px solid darkgreen;
+    height: 500px;
+    position:relative;
+    left: 15%;
+
+}
+
+nav, main{
+    border:  2px solid darkgreen;
+    padding: 0.5em 1em 1em 1em;
+    /*padding:0.5em 0em 0em 0em;*/
+}
+
+.messagestyle {
+    width: 99%;
+    height: 101%;
+    display: grid;
+    margin: -17% 0;
+    padding: 14%;
+    grid-template-areas:"nebenNav haupt "
+                            "main1 haupt ";
+    grid-template-columns: 40% 60%;
+     grid-template-rows: 19% auto}
+
+
+.haupt {
+    grid-area: haupt;
+    height: 96%;
+    width: 96%;
+}
+#nebenNav {
+
+    grid-area: nebenNav;
+}
+.main1 {
+    margin: 0%;
+    grid-area: main1;
+    height: 510px;
+    overflow: auto;
+    /* Added CSS */
+    display: flex;
+    flex-flow: column wrap;
+}
+.main1 { grid-area: main1; font-size: small; }
+
+dl{
+    float: left;
+}
+
+.message-title {
+    margin: 2rem 0 1rem 0;
+}
+
+.main-div {
+    height: 100vh;
+}
+
+.second-div{
+    height: 100%;
+}
+.content {
+    padding: 2%;
+    margin: 5%;
+    height: calc(100% - 95px);
+}
+.MuiInputLabel-outlined {
+    transform: translate(14px, 5px) scale(1);
+}
+
+.MuiOutlinedInput-input {
+     padding: 0;
+}
+
+.message-subject {
+    border: 1px solid gray;
+    padding: 0.4rem;
+    margin: 0.2rem;
+    background-color: #dddddd;
+    border-radius: 7px;
+}
+.message-subject p {
+        margin-bottom: 0
+    }
+
+
+.message-sender {
+    font-weight: bold;
+    color: darkgreen;
+}
+
+.message-all-title {
+    max-width: 100%;
+}
+
+.message-content div{
+    background-color: #dddddd;
+    border-radius: 5px;
+    margin: -1.5rem;
+    padding:0.5rem;
+}
+
+.message-title-infos {
+    font-size: small;
+    background-color:white;
+}
+
+.message-title-infos{
+    display: inline-block;
+}
+
+dl {
+    width: 100%;
+    padding: 4px;
+    margin: -1px
+}
+dt {
+    float: left;
+    width: 50%;
+    padding: 0;
+    margin: 0
+}
+dd {
+    float: left;
+    width: 50%;
+    padding: 0;
+    margin: 0
+}
+
+.message-From-style div{
+
+    border: 1px solid gray;
+    border-radius: 25px;
+    padding: 0.4rem;
+    margin: 0.2rem;
+    background-color: #dddddd;
+    width: 200px;
+    /*height:164px;*/
+    font-size: small;
+    overflow: auto;
+    /* Added CSS */
+    display: flex;
+    flex-flow: column wrap;
+}
+
+TextField[type="text"] {
+    height: 10px;
+    width: 80px;
+}
+
+.itemsearch{
+    padding: 9px;
+}
+
+.Textareastyle{
+    text-align: center;
+    position: relative;
+}
+
+.makeDivMessageScroll{
+    height: 361px;
+    overflow: auto;
+    /* Added CSS */
+    display: flex;
+    flex-flow: column wrap;
+}
+
+.message-timestamp-left{
+    padding:3%;
+}
+
+.message-timestamp-right {
+    position: absolute;
+    font-size: .85em;
+    font-weight: 300;
+    bottom: 5px;
+    right: 5px;
+}
+
+/*warp message text*/
+.message-content {
+    width: max-content;
+    overflow-wrap: break-word;
+    max-width: fit-content;
+}
+
+.firstbuschtable{
+    background-color: #dddddd;
+    border: 1px solid gray;
+    border-radius:10%;
+    text-align: center;
+    display: flex;
+    color: black;
+}
+
+.userSender{
+    display: flex;
+    color: black;
+    justify-content: center
+}
+
+.titelMessage{
+    background-color:white;
+}

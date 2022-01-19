@@ -1,97 +1,147 @@
 import React, {useState, useEffect, Component} from 'react';
-import Hearder from "../Hearder/Hearder";
 import APIService from "../../APIService";
-import Modal from "react-bootstrap/Modal";
 import {useCookies} from "react-cookie";
-
+import DateFnsUtils from '@date-io/date-fns';
+import {
+    MuiPickersUtilsProvider,
+    KeyboardTimePicker,
+    KeyboardDatePicker,
+} from '@material-ui/pickers';
+import Grid from '@material-ui/core/Grid';
+import Navbar from "../Hearder/Navbar";
+import DialogTitle from "@material-ui/core/DialogTitle";
+import DialogContent from "@material-ui/core/DialogContent";
+import DialogContentText from "@material-ui/core/DialogContentText";
+import DialogActions from "@material-ui/core/DialogActions";
+import Button from "@material-ui/core/Button";
+import Menu from "@material-ui/core/Menu";
+import MenuItem from "@material-ui/core/MenuItem";
+import Dialog from "@material-ui/core/Dialog";
+import './Trainingsplan.css'
 
 function AddTrainingsplan(props) {
 
     const [title, setTitle] = useState('')
     const [description, setDescription] = useState('')
-    const [date, setDate] = useState('')
     const [token] = useCookies(['myToken'])
     const handleClose = () => setShow(false);
     const [show, setShow] = useState(false);
     const handleShow = () => setShow(true);
- /*   const [search, setSearch] = React.useState('');
-    const [searchResults, setSearchResults] = React.useState([]);*/
+    const [date, setSelectedDate] = useState(new Date());
+    const [trainingstime, setTrainingstime] = useState();
+    const [anchorEl, setAnchorEl] = React.useState(null);
+    const [open, setOpen] = useState(false);
 
-
-    const _onFocus= (e)=>{
-        e.currentTarget.type = "date";
-    }
-  const _onBlur=(e)=>{
-        e.currentTarget.type = "text";
-        e.currentTarget.placeholder = "Enter a Date";
+    const setDate = (event ) => {
+        setSelectedDate(event)
     }
 
     const addTrainingsplan = function (){
-
-       APIService.CreateTraininingsplan({date,title,description}, token['myToken'])
+       APIService.CreateTraininingsplan({title:title,date:date,trainingstime:trainingstime,description:description})
            .then(response => props.addtraningsplanbtn)
-           .then( () => {
-               if (props.addtraningsplanbtn !== null) {
-                   handleShow()
-               }
-           })
-
-
-
     }
+
+    const handleClick = (event) => {
+        setAnchorEl(event.currentTarget);
+    };
 
     return (
 
         <div>
-            <div>
-               <Hearder/>
+            <div className = "navbar">
+                <Navbar/>
             </div>
             <br/>
             <br/>
             <div className='addTraininingsplan'>
                 <div className='createTraining'>
-                    <h2>Create Training</h2>
+                    <h2>Training erstellen</h2>
                 </div>
                 <form>
                     <div className="mb-3">
-                        <label className = "form-label" htmlFor = "date" >Date</label>
-                        <input  onFocus = {_onFocus} onBlur={_onBlur} className = "form-control" id="date"
-                               value={date}  onChange={ event => setDate(event.target.value)} autoFocus required='please enter valid date'/>
-                    </div>
-                    <div className="mb-3">
-
                             <div>
-                                <label className = "form-label" htmlFor = "title" >Title</label>
-                                <input type="" className = "form-control" id="title" placeholder="please enter title training"
+                                <label className = "form-label" htmlFor = "title" >Titel*</label>
+                                <input type="" className = "form-control" id="title" placeholder="Bitte Titel hier eingeben"
                                        value={title}  onChange={ event => setTitle(event.target.value)} required/>
                             </div>
-                              {/* <button  className='btn btn-primary' onClick={(event => addtitle(event))}>+</button>*/}
                     </div>
+                    <MuiPickersUtilsProvider utils={DateFnsUtils}>
+                        <Grid container  direction={"column"} spacing={1}>
+                            <Grid item>
+                                {date !== undefined && date !== null ?
+                                    <KeyboardDatePicker
+                                        variant="inline"
+                                        format="dd/MM/yyyy"
+                                        margin="normal"
+                                        name="startDate"
+                                        label="Datumauswahl"
+                                        fullWidth
+                                        value={date}
+                                        onChange={event => setDate(event)}
+                                        KeyboardButtonProps={{
+                                            "aria-label": "change date"
+                                        }}
+                                    />:null
+                                }
+
+                            </Grid>
+                            <Grid item>
+                                {date !== undefined && date !== null?
+                                    <KeyboardTimePicker
+                                        margin="normal"
+                                        id="time-picker"
+                                        label="Zeitauswahl"
+                                        fullWidth
+                                        value={date}
+                                        onChange={event => setDate(event)}
+                                        KeyboardButtonProps={{
+                                            'aria-label': 'change time',
+                                        }}
+                                    />:null
+                                }
+                            </Grid>
+                        </Grid>
+                    </MuiPickersUtilsProvider>
                     <div className="mb-3">
                         <label className = "form-label" htmlFor = "description" >Description</label>
-                        <textarea  type="text"  className = "form-control" id='description' placeholder="please describe hier the training format"
+                        <textarea  type="text"  className = "form-control" id='description' placeholder="Bitte beschreiben Sie hier das Trainingsformat"
                                    value={description} onChange={ event => setDescription(event.target.value)} required ></textarea>
                     </div>
-
                 </form>
-                <button  className='btn btn-primary' onClick={addTrainingsplan}>Save</button>
-                <Modal show={show} onHide={handleClose}>
-                    <Modal.Header>
-                        <Modal.Title>Trainer access</Modal.Title>
-                    </Modal.Header>
-                    <div>
-                        <input type="text" className = "form-control"  placeholder="please enter token to create a training"
-                               autoFocus/>
-                    </div>
-                    <Modal.Footer>
-                        <button className='btn btn-primary' onClick={handleClose}>
-                            Close
-                        </button>
-                        <button className='btn btn-primary' onClick={addTrainingsplan}>
-                            OK
-                        </button>
-                    </Modal.Footer>
-                </Modal>
+                <button  className='btn btn-primary' onClick={addTrainingsplan}>Speichern</button>
+                <Dialog
+                    open={open}
+                    onClose={handleClose}
+                    aria-labelledby="alert-dialog-title"
+                    aria-describedby="alert-dialog-description"
+                >
+                    <DialogTitle id="alert-dialog-title">{"User Registration successful"}</DialogTitle>
+                    <DialogContent>
+                        <DialogContentText id="alert-dialog-description">
+                            wollen Sie einer neuer Trainings hinzufügen?
+                        </DialogContentText>
+                    </DialogContent>
+                    <DialogActions>
+                        <Button redirect="/trainingsplan" style={{backgroundColor: 'red'}} aria-controls="simple-menu" aria-haspopup="true" onClick={handleClick}>
+                            Nein
+                        </Button>
+                        <Menu
+                            id="simple-menu"
+                            anchorEl={anchorEl}
+                            open={Boolean(anchorEl)}
+                            onClose={handleClose}
+                        >
+                            <MenuItem><a className='registration_link' href="/news"> News </a></MenuItem>
+                            <MenuItem><a className='registration_link' href="/trainingsplan">Trainingsplan</a></MenuItem>
+                            <MenuItem><a className='registration_link' href="/games"> Games</a></MenuItem>
+                            <MenuItem><a className='registration_link' href="/players"> Players</a></MenuItem>
+                            <MenuItem> <a className='registration_link' href="/message">Message</a></MenuItem>
+                        </Menu>
+                        <Button onClick={handleClose} style={{backgroundColor: 'green'}} autoFocus>
+                            Ja
+                        </Button>
+                    </DialogActions>
+                </Dialog>
             </div>
 
         </div>

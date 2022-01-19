@@ -1,0 +1,2 @@
+/* Eingabeelemente mit ungültigen Werten selektieren */
+input:invalid { border-color: red; }
